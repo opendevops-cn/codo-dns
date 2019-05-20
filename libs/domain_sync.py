@@ -15,11 +15,11 @@ import json
 ### 定义要同步配置的域名，如果为空就代表从系统获取
 domain_name_list = []
 ### 定义API地址
-api_url = 'http://gw.shinezone.net.cn/api/'
+api_url = 'https://demo.opendevops.cn/api/'
 domain_uri = '/dns/v2/dns/bind/domain/'
 zone_uri = '/dns/v2/dns/bind/zone/'
 conf_uri = '/dns/v1/dns/bind/conf/'
-auth_key = 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE1NTg0MTQyNDQsIm5iZiI6MTU1ODMyNzgyNCwiaWF0IjoxNTU4MzI3ODM0LCJpc3MiOiJhdXRoOiBzcyIsInN1YiI6Im15IHRva2VuIiwiaWQiOiIxNTYxODcxODA2MCIsImRhdGEiOnsidXNlcl9pZCI6IjIiLCJ1c2VybmFtZSI6InNzIiwibmlja25hbWUiOiJcdTZjODhcdTc4NTUiLCJpc19zdXBlcnVzZXIiOnRydWV9fQ.h2EkDlCy6szrno2OpSyuAxGjCdyIETn0nrqy7lmIMZo'
+auth_key = ''
 ###############
 
 domain_conf_dir = '/var/named/chroot/etc/'
