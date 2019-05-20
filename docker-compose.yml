@@ -1,9 +1,9 @@
 codo-kerrigan:
   restart: unless-stopped
-  image: kerrigan_image
+  image: codo_dns_image
   volumes:
     - /var/log/supervisor/:/var/log/supervisor/
     - /opt/ops_scripts:/opt/ops_scripts
     - /sys/fs/cgroup:/sys/fs/cgroup
   ports:
-    - "8030:80"
+    - "8060:80"
