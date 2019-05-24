@@ -1,4 +1,4 @@
-codo-kerrigan:
+codo-dns:
   restart: unless-stopped
   image: codo_dns_image
   volumes:
