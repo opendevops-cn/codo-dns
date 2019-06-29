@@ -14,19 +14,19 @@ ROOT_DIR = os.path.dirname(__file__)
 debug = True
 xsrf_cookies = False
 expire_seconds = 365 * 24 * 60 * 60
-cookie_secret = '61oETzKXQAGaYdkL5gEmGeJJFuYh7EQnp2X6TP1o/Vo='
+cookie_secret = os.getenv('COOKIE_SECRET', '61oETzKXQAGaYdkL5gEmGeJJFuYh7EQnp2X6TP1o/Vo=')
 
 DEFAULT_DB_DBHOST = os.getenv('DEFAULT_DB_DBHOST', '172.16.0.223')
 DEFAULT_DB_DBPORT = os.getenv('DEFAULT_DB_DBPORT', '3306')
 DEFAULT_DB_DBUSER = os.getenv('DEFAULT_DB_DBUSER', 'root')
 DEFAULT_DB_DBPWD = os.getenv('DEFAULT_DB_DBPWD', 'ljXrcyn7chaBU4F')
-DEFAULT_DB_DBNAME = os.getenv('DEFAULT_DB_DBNAME', 'codo_dns')
+DEFAULT_DB_DBNAME = os.getenv('DNS_DB_DBNAME', 'codo_dns')
 
 READONLY_DB_DBHOST = os.getenv('READONLY_DB_DBHOST', '172.16.0.223')
 READONLY_DB_DBPORT = os.getenv('READONLY_DB_DBPORT', '3306')
 READONLY_DB_DBUSER = os.getenv('READONLY_DB_DBUSER', 'root')
 READONLY_DB_DBPWD = os.getenv('READONLY_DB_DBPWD', 'ljXrcyn7chaBU4F')
-READONLY_DB_DBNAME = os.getenv('READONLY_DB_DBNAME', 'codo_dns')
+READONLY_DB_DBNAME = os.getenv('DNS_DB_DBNAME', 'codo_dns')
 
 named_init_conf = """
 options {

@@ -25,7 +25,7 @@ engine = create_engine('mysql+pymysql://%s:%s@%s:%s/%s?charset=utf8' % (
 
 def create():
     Base.metadata.create_all(engine)
-    print('[Success] 表结构创建成功!')
+    print('[Success] Table structure created!')
 
 
 def drop():
