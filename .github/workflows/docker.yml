@@ -1,0 +1,27 @@
+name: BuildDockerImage
+on:
+  push:
+  schedule:
+    - cron: '0 4 */1 * *'
+jobs:
+  build:
+    name: build sdk docker image
+    runs-on: 	ubuntu-latest
+    steps:
+    - uses: actions/checkout@v1
+      with:
+        fetch-depth: 1
+    - name: login docker
+      uses: actions/docker/login@master
+      env:
+        DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
+        DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
+    - name: build docker image
+      uses: actions/docker/cli@master
+      with:
+        args: "build -t opencodo/dns ."
+    - name: push docker image
+      uses: actions/docker/cli@master
+      with:    
+        args: "push opencodo/dns"
+      

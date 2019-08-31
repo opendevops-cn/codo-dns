@@ -1,4 +1,4 @@
-FROM opencodo/base
+FROM opencodo/python
 
 COPY doc/requirements.txt /tmp/requirements.txt
 
