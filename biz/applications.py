@@ -8,7 +8,8 @@ role   : Application
 
 import json
 from websdk.application import Application as myApplication
-from biz.handlers.domain_handler import domain_urls
+from biz.handlers.bind_domain_handler import domain_urls
+from biz.handlers.cloud_domain_handler import cloud_domain_urls
 from models.domain import DNSDomainConf
 from websdk.db_context import DBContext
 
@@ -19,6 +20,7 @@ class Application(myApplication):
         self.region_init(**settings)
         urls = []
         urls.extend(domain_urls)
+        urls.extend(cloud_domain_urls)
         super(Application, self).__init__(urls, **settings)
 
     ### 初始化配置
@@ -26,9 +28,7 @@ class Application(myApplication):
         with DBContext('w', None, True, **settings) as session:
             is_exist = session.query(DNSDomainConf.id).filter(DNSDomainConf.conf_name == 'conf_init').first()
 
-            if is_exist:
-                return
-
+            if is_exist: return
             named_init_conf = settings['named_init_conf']
             session.add(DNSDomainConf(conf_name='conf_init', conf_value=str(named_init_conf)))
 
@@ -37,8 +37,7 @@ class Application(myApplication):
         with DBContext('w', None, True, **settings) as session:
             is_exist = session.query(DNSDomainConf.id).filter(DNSDomainConf.conf_name == 'region_init').first()
 
-            if is_exist:
-                return
+            if is_exist: return
 
             region_init_conf = settings['region_init_conf']
             session.add(DNSDomainConf(conf_name='region_init', conf_value=json.dumps(region_init_conf)))
