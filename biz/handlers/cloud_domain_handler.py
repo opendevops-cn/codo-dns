@@ -227,6 +227,8 @@ class CloudRecordHandler(BaseHandler):
                 DomainCloudConf.alias_name == record_obj.account).first()
             domain_obj = session.query(DomainName).filter(DomainName.domain_name == domain_name).first()
 
+        if account_obj.cloud_name in ['GoDaddy', 'godaddy']:
+            return self.write(dict(code=3, msg='GoDaddy 接口有BUG，暂时不支持修改'))
         base_new_dict = dict(
             record_id=record_obj.record_id,
             domain_name=domain_name,
@@ -316,6 +318,9 @@ class CloudRecordHandler(BaseHandler):
             else:
                 return self.write(dict(code=-1, msg='参数有误'))
 
+        if account_obj.cloud_name in ['GoDaddy', 'godaddy']:
+            return self.write(dict(code=3, msg='GoDaddy 接口有BUG，暂时不支持禁用/启用'))
+
         domain_name = record_obj.domain_name
         domain = domain_factory(account_obj.cloud_name, domain_id=domain_obj.domain_id,
                                 access_id=account_obj.access_id, access_key=account_obj.access_key,
@@ -390,6 +395,9 @@ class CloudRecordHandler(BaseHandler):
                 domain_obj = session.query(DomainName).filter(DomainName.domain_name == domain_name).first()
             else:
                 return self.write(dict(code=-1, msg='参数有误'))
+
+        if account_obj.cloud_name in ['GoDaddy', 'godaddy']:
+            return self.write(dict(code=3, msg='GoDaddy 接口有BUG，暂时不支持删除'))
 
         domain = domain_factory(account_obj.cloud_name, domain_id=domain_obj.domain_id,
                                 access_id=account_obj.access_id,
