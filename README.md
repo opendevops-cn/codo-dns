@@ -22,6 +22,7 @@
 ##### 添加解析
 ![menus](./doc/images/add_domain_zone.png)
 ##### 同步配置文件
+
 ![menus](./doc/images/python3_domain_sync.png)
 
 #### 项目部署
@@ -62,7 +63,7 @@ curl -I -X GET -m  10 -o /dev/null -s -w %{http_code}  http://dns.opendevops.cn:
 [BIND 搭建](./doc/bind.md)
 
 #### 多区域支持
-- 把doc下的所有的named 开头的文件放入 bind服务器的 /var/named/chroot/etc/ 目录下
+- 把docker下的所有的named 开头的文件放入 bind服务器的 /var/named/chroot/etc/ 目录下
 - 这里是和 settings 下的默认bind配置文件进行关联
 
 #### 自定义区域
