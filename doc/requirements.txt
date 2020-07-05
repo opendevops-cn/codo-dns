@@ -1,2 +1,5 @@
 fire
 tornado
+aliyun-python-sdk-dysmsap===1.0.0
+dnspod-python===1.0.0
+GoDaddyPy===2.3.3
