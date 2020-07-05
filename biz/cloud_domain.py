@@ -31,7 +31,7 @@ GoDaddyPy===2.3.3
 def deco(cls, release=False):
     def _deco(func):
         def __deco(*args, **kwargs):
-            if not cls.get_lock(cls, key_timeout=600, func_timeout=600): return False
+            if not cls.get_lock(cls, key_timeout=600, func_timeout=60): return False
             try:
                 return func(*args, **kwargs)
             finally:
