@@ -12,15 +12,20 @@ from tornado.options import define
 from websdk.program import MainProgram
 from settings import settings as app_settings
 from biz.applications import Application as DNSApi
+from biz.domain_program import Application as DNSCron
 
 define("service", default='api', help="start service flag", type=str)
 
 
 class MyProgram(MainProgram):
-    def __init__(self, progress_id='dns'):
+    def __init__(self, service='dns', progress_id='dns'):
         self.__app = None
         settings = app_settings
-        self.__app = DNSApi(**settings)
+        if service == 'dns':
+            self.__app = DNSApi(**settings)
+        elif service == 'dns_cron':
+            self.__app = DNSCron(**settings)
+
         super(MyProgram, self).__init__(progress_id)
         self.__app.start_server()
 
